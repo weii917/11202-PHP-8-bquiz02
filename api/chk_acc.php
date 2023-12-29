@@ -1,6 +1,5 @@
 <?php include_once "db.php";
 
-$_POST['acc'];
 $res=$User->count(['acc'=>$_POST['acc']]);
 
 if($res>0){
@@ -8,5 +7,4 @@ if($res>0){
 }else{
     echo 0;
 }
-
 ?>
