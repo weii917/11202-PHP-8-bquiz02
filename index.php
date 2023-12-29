@@ -16,9 +16,9 @@
 	<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
 		<pre id="ssaa"></pre>
 	</div>
-	<div id="all">
+	<div id="all">	
 		<div id="title">
-			<?= date("m月d日 l"); ?> | 今日瀏覽: 1 | 累積瀏覽: 36 
+			<?= date("m月d日 l"); ?> | 今日瀏覽: <?=$Total->find(['date' => date('Y-m-d')])['total'];?> | 累積瀏覽: <?=$Total->sum('total');?>	 
 			<a href="index.php" style="float:right">回首頁</a>
 		</div>
 		<div id="title2" title="健康促進網-回首頁">
