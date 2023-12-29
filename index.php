@@ -36,17 +36,28 @@
 				<div>
 					<marquee style="width:78%; display:inline-block;">請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					<span style="width:20%; display:inline-block;">
-						<a href="?do=login">會員登入</a>
+						<?php
+						if (!isset($_SESSION['user'])) {
+						?>
+							<a href="?do=login">會員登入</a>
+						<?php
+						} else {
+						?>
+							歡迎,<?= $_SESSION['user']; ?>
+							<button>登出</button>
+						<?php
+						}
+						?>
 					</span>
 					<div class="">
 						<?php
-							$do=$_GET['do']??'main';
-							$file="./front/{$do}.php";
-							if(file_exists(($file))){
-								include $file;
-							}else{
-								include "./front/main.php";
-							}
+						$do = $_GET['do'] ?? 'main';
+						$file = "./front/{$do}.php";
+						if (file_exists(($file))) {
+							include $file;
+						} else {
+							include "./front/main.php";
+						}
 
 						?>
 					</div>
