@@ -1,4 +1,4 @@
-<form action="./api/edit_user.php" method="post">
+<form action="./api/edit_news.php" method="post">
     <table style="width:75%;margin:auto;text-align:center">
         <tr>
             <td style="width:10%">編號</td>
@@ -25,6 +25,7 @@
                 </td>
                 <td>
                     <input type="checkbox" name="del[]" value="<?= $row['id']; ?>">
+                    <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                 </td>
             </tr>
         <?php
@@ -34,22 +35,26 @@
     </table>
     <div class="ct">
 
-        <?php
-        if ($now > 1) {
-            $prev = $now - 1;
-            echo "<a href='?do=$do&p=$prev'> < </a>";
-        }
-
-        for ($i = 1; $i <= $pages; $i++) {
-            $fontsize = ($now == $i) ? '24px' : '16px';
-            echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'> $i </a>";
-        }
-
-        if ($now < $pages) {
-            $next = $now + 1;
-            echo "<a href='?do=$do&p=$next'> > </a>";
-        }
-        ?>
+    <?php
+    if($now-1>0){
+        $prev=$now-1;
+        echo "<a href='back.php?do=news&p=$prev'> ";
+        echo " < ";
+        echo " </a>";
+    }
+    for($i=1;$i<=$pages;$i++){
+        $size=($i==$now)?'font-size:22px;':'font-size:16px;';
+        echo "<a href='back.php?do=news&p=$i' style='{$size}'> ";
+        echo $i;
+        echo " </a>";
+    }
+    if($now+1<=$pages){
+        $next=$now+1;
+        echo "<a href='back.php?do=news&p=$next'> ";
+        echo " > ";
+        echo " </a>";
+    }
+    ?>
     </div>
     <div class="ct">
         <input type="submit" value="確定修改">
