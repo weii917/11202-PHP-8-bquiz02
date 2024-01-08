@@ -16,6 +16,7 @@
         $rows = $News->all(['sh' => 1], " limit $start,$div");
         foreach ($rows as $row) {
         ?>
+        <!-- 1.title裡附帶id，要讓js點擊時得到id，2.在存進簡短內容例如:id="s1" 完整內容例如: id="a1 -->
             <tr>
             <td><div class='title' data-id="<?=$row['id'];?>" style='cursor: pointer'><?=$row['title'];?></div></td>
             <td>
@@ -52,6 +53,9 @@
 
 </fieldset>
 <script>
+    // 先取得id，在選取簡短內容例如:id="s1" 完整內容例如: id="a1"
+    // toggle 會切換對應的id，隱藏時會顯示，顯示時會隱藏
+    // 當點title，#s${id}原本顯示25字的會隱藏，#a${id}顯示完整內容
 $(".title").on('click',(e)=>{
     let id = $(e.target).data('id');
     $(`#s${id},#a${id}`).toggle();

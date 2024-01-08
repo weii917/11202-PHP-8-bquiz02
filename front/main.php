@@ -141,6 +141,7 @@
 
 </article>
 
+<!-- click時 tag裡其他有active會移除，點擊此標籤會加入active-->
 <script>
     $(".tag").on('click', function() {
         $(".tag").removeClass('active')
