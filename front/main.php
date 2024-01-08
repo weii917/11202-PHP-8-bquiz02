@@ -6,6 +6,8 @@
         margin-left: -1px;
         text-align: center;
         border-radius: 5px 5px 0 0;
+        cursor: pointer;
+
     }
 
     .tags {
