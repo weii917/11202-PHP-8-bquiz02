@@ -32,7 +32,7 @@
                     </div>
                 </td>
                 <td>
-                    <span id="g<?= $row['id']; ?>"><?= $row['good']; ?></span>個人說
+                    <span><?= $row['good']; ?></span>個人說
                     <img src="./icon/02B03.jpg" style="width:25px">
                     <?php
                     if (isset($_SESSION['user'])) {
